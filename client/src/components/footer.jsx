@@ -8,7 +8,7 @@ const Footer = () => {
       <div class="footer mt-auto">
         <div class="inner-footer">
           <div class="footer-items">
-            <h1>  WORKHIRE</h1>
+            <h1>  Jobsy</h1>
             <p>Description of any product or motto of the company.</p>
           </div>
 
@@ -69,14 +69,14 @@ const Footer = () => {
             <ul className="footer-ul text-xl">
               <li className="flex items-center">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                <a href="mailto:support@workhire.com">support@workhire.com</a>
+                <a href="mailto:support@Jobsy.com">support@Jobsy.com</a>
               </li>
             </ul>
 
           </div>
         </div>
 
-        <div class="footer-bottom">Copyright &copy; WORKHIRE</div>
+        <div class="footer-bottom">Copyright &copy; Jobsy</div>
       </div>
     </>
   );

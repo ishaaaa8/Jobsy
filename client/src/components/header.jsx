@@ -27,7 +27,7 @@ const Header = () => {
       }`}
     >
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
-        <h1 className="w-16 logo-text font-semibold text-[4rem] cursor-pointer">WorkHire</h1>
+        <h1 className="w-16 logo-text font-semibold text-[4rem] cursor-pointer">Jobsy</h1>
       </div>
 
       <nav>

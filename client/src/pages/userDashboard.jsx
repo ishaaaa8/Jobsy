@@ -69,9 +69,10 @@ export default function DashboardUser() {
       form_desc: desc,
       form_budget: budget,
     };
-
+    console.log(obj)
     try {
       const data = await edit_form(obj);
+      alert("Updated succesfully!!")
       console.log(data);
       window.location.reload();
     } catch (error) {
@@ -159,7 +160,7 @@ export default function DashboardUser() {
                 onChange={(e) => setBudget(e.target.value)}
                 placeholder="Form Budget"
               />
-              <button type="submit">Save Changes</button>
+              <button type="submit" onClick={handleChange}>Save Changes</button>
             </form>
           </div>
         )}

@@ -300,32 +300,60 @@ router.delete("/form/delete", async (req, res) => {
   }
 });
 
-router.put("/form/edit", async (req, res) => {
+// router.put("/form/edit", async (req, res) => {
 
-  try {
-    let { formid, form_title, form_desc, form_budget } = req.body;
+//   try {
+//     let { formid, form_title, form_desc, form_budget } = req.body;
 
-  const form = await Form.findOne({_id: formid});
-  console.log(form);
+//   const form = await Form.findOne({_id: formid});
+//   console.log(form);
 
-  form.form_title = form_title,
-    form.form_desc = form_desc,
-    form.form_budget = form_budget;
+//   form.form_title = form_title,
+//     form.form_desc = form_desc,
+//     form.form_budget = form_budget;
 
-  form.save(function (error, document) {
-    if (error) {
-      console.error(error);
-      return res.json({ message: "try again", tag: false });
-    }
-    //console.log(document);
-    return res.json({ message: form, tag: true });
-  });
+//   form.save(function (error, document) {
+//     if (error) {
+//       console.error(error);
+//       return res.json({ message: "try again", tag: false });
+//     }
+//     //console.log(document);
+//     return res.json({ message: form, tag: true });
+//   });
 
-  } catch(err) {
-    return res.json(err);
-  }
+//   } catch(err) {
+//     return res.json(err);
+//   }
   
+// });
+router.put("/form/edit", async (req, res) => {
+    try {
+      let { formid, form_title, form_desc, form_budget } = req.body;
+  
+      // Find the form by ID
+      const form = await Form.findOne({ _id: formid });
+  
+      if (!form) {
+        return res.json({ message: "Form not found", tag: false });
+      }
+  
+      // Update the form fields
+      form.form_title = form_title;
+      form.form_desc = form_desc;
+      form.form_budget = form_budget;
+  
+      // Save the updated form
+      const updatedForm = await form.save();
+  
+      // Send the response with the updated form
+      return res.json({ message: updatedForm, tag: true });
+  
+    } catch (err) {
+      console.error(err);
+      return res.json({ message: "An error occurred while updating the form.", tag: false });
+    }
 });
+  
 
 router.post("/userdets", async (req, res) => {
   const id = req.body.id;

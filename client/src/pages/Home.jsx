@@ -33,7 +33,7 @@ export default function Home(){
           <div className="w-1/2">
             <div className="hometext p-2 text-white text-5xl w-full font-bold">
               <p>
-                Workhire is a one stop interface connecting clients and technical
+                Jobsy is a one stop interface connecting clients and technical
                 experts of every field. <br /> Revolutionise the digital reach
                 of your business with our experts.
               </p>
@@ -42,7 +42,7 @@ export default function Home(){
           <Card
             title="Expertise"
             img={cardbg}
-            body="workhire has carefully vetted and picked technical experts from all around the globe."
+            body="Jobsy has carefully vetted and picked technical experts from all around the globe."
             mouseEnter={img1}
             mouseLeave={originalImg}
           />
