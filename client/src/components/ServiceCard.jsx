@@ -1,24 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "../styles/infocard.css";
-const InfoCard = () => {
+import "../styles/services.css";
+const ServiceCard = (props) => {
   return (
-    <div className="w-full h-full flex justify-center items-center">
-      <div class="box">
-        <div className="left"></div>
-        <div class="right">
-          <div class="content">
-            <h1>Worried about your growth?</h1>
-            <p>Lets prosper together. </p>
-            <p>Quality is our top most priority.</p>
-            <div className="btn rounded">
-            <Link to="/signup">Get Started</Link>
-            </div>
-          </div>
-        </div>
+    <>
+      <div class="cardtemp m-5">
+        <a href="#" class="card education p-2">
+          <div class="overlay"></div>
+          <div class="circle"></div>
+          <h4 className="emph text-2xl text-white font-bold">{props.title}</h4>
+          <p className="text-sm">{props.body}</p>
+        </a>
       </div>
-    </div>
+    </>
   );
 };
 
-export default InfoCard;
+export default ServiceCard;
