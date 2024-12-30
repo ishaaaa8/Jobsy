@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import about1 from "../assets/about1.svg";
 import "../styles/index.css";
-import Footer from "../components/Footer";
+import Footer from "../components/footer";
 import ServiceCard from "../components/ServiceCard";
 import TeamCard from "../components/TeamCard";
 import logoDes from "../assets/logo-design.png";
