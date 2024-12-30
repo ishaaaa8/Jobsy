@@ -22,13 +22,12 @@ A user-friendly platform designed to connect freelancers with clients while stre
 ## **💻 Tech Stack**
 
 - **Frontend:**  
-  - 🌐 React  
-  - 🎨 Tailwind CSS, CSS  
+  - 🌐 React Js
+  - 🎨 Tailwind CSS 
 
 - **Backend:**  
   - ⚡ Express.js  
-  - 🛢️ MongoDB  
-  - 🔒 JWT & Bcrypt  
+  - 🛢️ MongoDB    
 
 - **Payment Gateway:**  
   - 💸 PayPal Developer API  
@@ -49,6 +48,22 @@ A user-friendly platform designed to connect freelancers with clients while stre
 
 ---
 
+## **📸 Screenshots**
+
+### 🏠 **Home Page**
+![Home Page](./client/src/assets/1ss.png)
+
+### 📋 **Signup page**
+![Task Management](./client/src/assets/2ss.png)
+
+### 🔒 **Login Page**
+![Admin Panel](./client/src/assets/3ss.png)
+
+### 📋 **User Dashboard**
+![Admin Panel](./client/src/assets/4ss.png)
+
+### 🔒 **Admin Dashboard**
+![Admin Panel](./client/src/assets/7ss.png)
 ## **🛠️ Installation & Setup**
 
 ### **Prerequisites**
@@ -60,5 +75,5 @@ A user-friendly platform designed to connect freelancers with clients while stre
 
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/ishaaaa8/Jobsy.git
+   cd Jobsy
