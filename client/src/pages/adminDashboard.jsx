@@ -24,7 +24,7 @@ export default function DashboardAdmin() {
 
   const handleAction = async (e) => {
     e.preventDefault();
-    console.log(e.target.name);
+    console.log("handle");
     let formid = e.target.name;
 
     let newAction = e.target.value;
@@ -34,12 +34,21 @@ export default function DashboardAdmin() {
       action: newAction,
     };
 
-    // console.log(obj);
+    console.log(obj);
 
-    action_by_admin(obj).then((data) => {
-      console.log(data);
-      // window.location.reload();
-    });
+    // action_by_admin(obj).then((data) => {
+    //   console.log(data);
+    //   // window.location.reload();
+    // });
+    try {
+      const result = await action_by_admin(obj);
+      console.log("Action by admin response:", result);
+      // Optionally refresh the page
+      window.location.reload();
+    } catch (error) {
+      console.error("Failed to handle action:", error);
+      alert("Failed to perform the action. Please try again later.");
+    }
 
     // console.log(e.target.value);
   };

@@ -146,49 +146,104 @@ function generateFormUserId() {
   return shortid.generate();
 }
 //Submit Form checked
+// router.post("/submit_form", upload.array("images", 10), async (req, res) => {
+//   const token = req.body.token;
+//   const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+//   const userId = decodedToken.id;
+//   // const formsData = req.body;
+
+//   // const files = req.files;
+//   // const images=files.map((f)=>f.filename);
+//   // console.log(JSON.stringify(formsData));
+//   // console.log(JSON.stringify(files))
+//   // console.log(JSON.stringify(images))
+
+//   // console.log(userId);
+//   const temp_user_name = await User.findOne({_id: userId});
+//   // console.log(temp_user_name.user_name);
+
+
+//   let { form_title, form_desc, form_budget, form_id, user_id } = req.body;
+//   form_id = generateFormUserId();
+
+//   const retform = new Form({
+//     form_id,
+//     form_title,
+//     form_desc,
+//     form_budget,
+//     user_id: userId,
+//     form_user_name: temp_user_name.user_name,
+//     form_user_contact: temp_user_name.user_contact
+//   });
+
+//   console.log(retform);
+
+//   // // Save the new user forms to the database
+
+// //   retform.save(function (error, document) {
+// //     if (error) {
+// //       console.error(error);
+// //       return res.json({ message: "try again", tag: false });
+// //     }
+// //     return res.json({ message: "Form submit Success", tag: true });
+// //   });
+//   const saveForm = async () => {
+//     try {
+//       const savedForm = await retform.save();
+//       console.log('Form saved successfully:', savedForm);
+//     } catch (error) {
+//       console.error('Error saving form:', error);
+//     }
+//     };
+//     saveForm();
+// });
 router.post("/submit_form", upload.array("images", 10), async (req, res) => {
-  const token = req.body.token;
-  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-  const userId = decodedToken.id;
-  // const formsData = req.body;
-
-  // const files = req.files;
-  // const images=files.map((f)=>f.filename);
-  // console.log(JSON.stringify(formsData));
-  // console.log(JSON.stringify(files))
-  // console.log(JSON.stringify(images))
-
-  // console.log(userId);
-  const temp_user_name = await User.findOne({_id: userId});
-  // console.log(temp_user_name.user_name);
-
-
-  let { form_title, form_desc, form_budget, form_id, user_id } = req.body;
-  form_id = generateFormUserId();
-
-  const retform = new Form({
-    form_id,
-    form_title,
-    form_desc,
-    form_budget,
-    user_id: userId,
-    form_user_name: temp_user_name.user_name,
-    form_user_contact: temp_user_name.user_contact
-  });
-
-  console.log(retform);
-
-  // // Save the new user forms to the database
-
-  retform.save(function (error, document) {
-    if (error) {
-      console.error(error);
-      return res.json({ message: "try again", tag: false });
+    try {
+      // Decode the token to get user ID
+      const token = req.body.token;
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+      const userId = decodedToken.id;
+  
+      // Fetch user details
+      const temp_user = await User.findOne({ _id: userId });
+      if (!temp_user) {
+        return res.status(404).json({ message: "User not found", tag: false });
+      }
+  
+      // Generate form data
+      const { form_title, form_desc, form_budget } = req.body;
+      const form_id = generateFormUserId();
+  
+      const retform = new Form({
+        form_id,
+        form_title,
+        form_desc,
+        form_budget,
+        user_id: userId,
+        form_user_name: temp_user.user_name,
+        form_user_contact: temp_user.user_contact,
+      });
+  
+      console.log("Form to be saved:", retform);
+  
+      // Save the form to the database
+      const savedForm = await retform.save();
+      console.log("Form saved successfully:", savedForm);
+  
+      // Respond to the client
+      return res.json({ message: "Form submitted successfully", tag: true, form: savedForm });
+    } catch (error) {
+      console.error("Error saving form:", error);
+  
+      // Handle token-related errors explicitly
+      if (error.name === "JsonWebTokenError") {
+        return res.status(401).json({ message: "Invalid token", tag: false });
+      }
+  
+      return res.status(500).json({ message: "Internal server error", tag: false });
     }
-    return res.json({ message: "Form submit Success", tag: true });
   });
-});
-
+  
 // Edit form dena hki nhi??
 
 // Edit form
@@ -292,7 +347,7 @@ router.post("/forms_by_user", async (req, res) => {
   try {
     const id = req.body.id;
     const forms = await Form.find({ user_id: id });
-    // console.log(forms)
+    console.log(forms)
     if (forms) {
       return res.json({ message: forms, tag: true });
     }

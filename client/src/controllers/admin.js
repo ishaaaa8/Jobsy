@@ -59,14 +59,36 @@ export const get_forms = async (obj) => {
   return ans;
 };
 
+// export const action_by_admin = async (obj) => {
+//   const res = await fetch(`${base}/api/admin/action_by_admin`, {
+//     method: "PUT",
+//     body: JSON.stringify(obj),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   const ans = await res.json();
+//   return ans;
+// };
 export const action_by_admin = async (obj) => {
-  const res = await fetch(`${base}/api/admin/action_by_admin`, {
-    method: "PUT",
-    body: JSON.stringify(obj),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const ans = await res.json();
-  return ans;
-};
+    try {
+      const response = await fetch("http://localhost:5000/api/admin/action_by_admin", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error in action_by_admin:", error);
+      throw error;
+    }
+  };
+  

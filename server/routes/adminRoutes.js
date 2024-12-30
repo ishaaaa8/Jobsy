@@ -43,6 +43,8 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+
+
 router.post("/login", async (req, res) => {
   try {
     const { admin_email, admin_password } = req.body;
@@ -73,6 +75,8 @@ router.post("/login", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
+
 
 // Authentication route
 router.post("/auth", (req, res) => {
@@ -161,36 +165,62 @@ router.post("/forms", async (req, res) => {
 });
 
 router.put("/action_by_admin", async (req, res) => {
-  try {
-    let {action, id} = req.body;
-
-
-    const form = await Form.findOne({_id: id});
-    form.action = action;
-    console.log(action);
-
-    if(action == "accept"){
-      form.status = "Accepted";
-    }
-    else if(action == "deny"){
-      form.status = "Rejected";
-    }
-    else{
-      form.status = "Pending"
-    }
-
-    form.save(function (error, document) {
-      if (error) {
-        console.error(error);
-        return res.json({ message: "try again", tag: false });
+    try {
+      let { action, id } = req.body;
+  
+      // Find the form by its ID
+      const form = await Form.findOne({ _id: id });
+      if (!form) {
+        return res.status(404).json({ message: "Form not found", tag: false });
       }
-      //console.log(document);
+  
+      // Set the form action and status
+      form.action = action;
+      form.status = action === "accept" ? "Accepted" :
+                    action === "deny" ? "Rejected" : "Pending";
+  
+      // Save the updated form
+      await form.save();
       return res.json({ message: form, tag: true });
-    });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+  
+    } catch (err) {
+      console.error("Error processing action:", err);
+      return res.status(500).json({ message: err.message, tag: false });
+    }
+  });
+  
+
+// router.put("/action_by_admin", async (req, res) => {
+//   try {
+//     let {action, id} = req.body;
+
+
+//     const form = await Form.findOne({_id: id});
+//     form.action = action;
+//     console.log(action);
+
+//     if(action == "accept"){
+//       form.status = "Accepted";
+//     }
+//     else if(action == "deny"){
+//       form.status = "Rejected";
+//     }
+//     else{
+//       form.status = "Pending"
+//     }
+
+//     form.save(function (error, document) {
+//       if (error) {
+//         console.error(error);
+//         return res.json({ message: "try again", tag: false });
+//       }
+//       //console.log(document);
+//       return res.json({ message: form, tag: true });
+//     });
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// });
 
 
 

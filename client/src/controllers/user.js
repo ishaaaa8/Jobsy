@@ -24,6 +24,7 @@ export const auth_user = async (obj) => {
 };
 
 export const login_user = async (obj) => {
+    console.log("login")
   const res = await fetch(`${base}/api/user/login`, {
     method: "POST",
     body: JSON.stringify(obj),
@@ -91,6 +92,10 @@ export const edit_form = async (obj) => {
       "Content-Type": "application/json",
     },
   });
+  if (!res.ok) {
+    // If the response is not successful (status code is not 200-299)
+    throw new Error(`Error: ${res.status} - ${res.statusText}`);
+  }
   const ans = await res.json();
   return ans;
 };

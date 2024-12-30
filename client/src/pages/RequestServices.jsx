@@ -47,6 +47,7 @@ export default function DashboardApplicant() {
       form_budget: budget,
       token: localStorage.getItem("user_token"),
     };
+    console.log(obj);
 
     submit_form(obj).then((data) => {
       alert(data.message);
@@ -61,7 +62,6 @@ export default function DashboardApplicant() {
         {/* <img className="imgabout" src={about1} /> */}
         <div className="userdetails bg-[#e6e6e6] rounded-lg shadow-2xl p-16 ml-10 mr-10 mt-20">
           <div className="text-5xl text-center">What Service do you need?</div>
-
           {isUserLoggedIn ? (
             <>
               {/* <label className="text-xl ml-10 font-medium "> Title</label>
@@ -106,7 +106,7 @@ export default function DashboardApplicant() {
               </button> */}
               <div>
                 <div class="signup">
-                  <form method="POST">
+                  <form>
                     <select
                       onChange={(e) => setTitle(e.target.value)}
                       className="dropdown"
@@ -155,6 +155,7 @@ export default function DashboardApplicant() {
                     <button
                       className="signup-btn"
                       value="Register"
+                      type="button"
                       onClick={handleChange}
                     >
                       Submit
