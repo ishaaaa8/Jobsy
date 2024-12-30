@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 // import logopic from "../assets/logo.jpeg";
-// import MenuItems from "./MenuItems";
+import MenuItems from "./MenuItems";
 
 const Header = () => {
   const [active, setActive] = useState(false);
@@ -110,7 +110,7 @@ const Header = () => {
             </li>
           )}
         </ul>
-        {/* <MenuItems showMenu={showMenu} active={active} /> */}
+        <MenuItems showMenu={showMenu} active={active} />
       </nav>
     </div>
   );
