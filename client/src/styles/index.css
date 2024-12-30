@@ -264,3 +264,22 @@ body {
   .edit-form-section button:hover {
     background-color: #45a049;
   }
+  .data-container-button {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .data-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .dashcard {
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
