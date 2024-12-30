@@ -4,21 +4,6 @@ A user-friendly platform designed to connect freelancers with clients while stre
 
 ---
 
-## **🚀 Features**
-
-### **For Users**
-- 📝 **Post Freelancing Tasks**: Easily create detailed task posts with all necessary information.
-- ✏️ **Edit Tasks**: Update existing tasks effortlessly.
-- ❌ **Delete Tasks**: Remove outdated or completed tasks.
-- 💳 **Secure Payments**: Use **PayPal** for hassle-free and secure payment processing.
-
-### **For Admin**
-- ✅ **Approve Tasks**: Accept tasks that meet requirements.
-- ❌ **Reject Tasks**: Decline tasks that don't comply with platform standards.
-- 🔐 **Secure Access**: Admin actions protected with robust authentication mechanisms.
-
----
-
 ## **💻 Tech Stack**
 
 - **Frontend:**  
@@ -31,6 +16,37 @@ A user-friendly platform designed to connect freelancers with clients while stre
 
 - **Payment Gateway:**  
   - 💸 PayPal Developer API  
+
+---
+## **📸 Screenshots**
+
+### 🏠 **Home Page**
+![Home Page](./client/src/assets/1ss.png)
+
+### 📋 **Signup page**
+![Task Management](./client/src/assets/2ss.png)
+
+### 🔒 **Login Page**
+![Admin Panel](./client/src/assets/3ss.png)
+
+### 📋 **User Dashboard**
+![Admin Panel](./client/src/assets/4ss.png)
+
+### 🔒 **Admin Dashboard**
+![Admin Panel](./client/src/assets/7ss.png)
+
+## **🚀 Features**
+
+### **For Users**
+- 📝 **Post Freelancing Tasks**: Easily create detailed task posts with all necessary information.
+- ✏️ **Edit Tasks**: Update existing tasks effortlessly.
+- ❌ **Delete Tasks**: Remove outdated or completed tasks.
+- 💳 **Secure Payments**: Use **PayPal** for hassle-free and secure payment processing.
+
+### **For Admin**
+- ✅ **Approve Tasks**: Accept tasks that meet requirements.
+- ❌ **Reject Tasks**: Decline tasks that don't comply with platform standards.
+- 🔐 **Secure Access**: Admin actions protected with robust authentication mechanisms.
 
 ---
 
@@ -48,22 +64,7 @@ A user-friendly platform designed to connect freelancers with clients while stre
 
 ---
 
-## **📸 Screenshots**
 
-### 🏠 **Home Page**
-![Home Page](./client/src/assets/1ss.png)
-
-### 📋 **Signup page**
-![Task Management](./client/src/assets/2ss.png)
-
-### 🔒 **Login Page**
-![Admin Panel](./client/src/assets/3ss.png)
-
-### 📋 **User Dashboard**
-![Admin Panel](./client/src/assets/4ss.png)
-
-### 🔒 **Admin Dashboard**
-![Admin Panel](./client/src/assets/7ss.png)
 ## **🛠️ Installation & Setup**
 
 ### **Prerequisites**
